@@ -1,7 +1,4 @@
-function greeter(person :any) {
-    return "Hello, " + person;
-}
+#!/usr/bin/env node
 
-var user = "Jane User";
-
-document.body.innerHTML = greeter(user);
+import program from 'commander'
+console.log(program)
