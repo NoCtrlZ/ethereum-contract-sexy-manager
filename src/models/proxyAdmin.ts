@@ -1,9 +1,10 @@
 export default class ProxyAdmin {
     path: string
-    address?: string
+    address: string
 
     constructor(path :string) {
         this.path = path
+        this.address = ''
     }
 
     json() {

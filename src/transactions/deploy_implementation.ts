@@ -22,7 +22,7 @@ const deployImplementation = async (projectDir :string) => {
         })
     } catch (err) {
         console.log(err)
-        return false
+        return implementation.self()
     }
     return implementation.self()
 }

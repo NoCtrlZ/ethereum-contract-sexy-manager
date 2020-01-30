@@ -22,7 +22,7 @@ const deployProxyAdmin = async (projectDir :string) => {
         })
     } catch (err) {
         console.log(err)
-        return false
+        return proxyAdmin.self()
     }
     return proxyAdmin.self()
 }

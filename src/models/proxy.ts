@@ -1,4 +1,4 @@
-export default class Implementation {
+export default class Proxy {
     path: string
     address: string
 

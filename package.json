@@ -7,7 +7,7 @@
     "test": "truffle test",
     "start": "./lib/bin/index.js",
     "dev": "ts-node src/bin/index.ts",
-    "clean": "rm -rf .sexydynamite build node_modules",
+    "clean": "rm -rf .sexydynamite build node_modules lib",
     "ts-node": "ts-node",
     "truffle": "truffle",
     "compile:src": "rm -rf lib && tsc && chmod a+x lib/bin/index.js",
@@ -33,6 +33,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "bignumber.js": "^9.0.0",
     "commander": "^4.1.0",
     "truffle": "^5.1.10",
     "web3": "^1.2.5"

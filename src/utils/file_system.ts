@@ -46,4 +46,8 @@ const getProxyAdminPath = () => {
     return path.join(__dirname, '..', '..', 'build', 'contracts', 'ProxyAdmin.json')
 }
 
-export { createNewDir, joinPath, createNewFile, postscriptFile, getTruffleConfig, getProxyAdminPath }
+const getProxyPath = () => {
+    return path.join(__dirname, '..', '..', 'build', 'contracts', 'Proxy.json')
+}
+
+export { createNewDir, joinPath, createNewFile, postscriptFile, getTruffleConfig, getProxyAdminPath, getProxyPath }
