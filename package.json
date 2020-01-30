@@ -7,9 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./lib/bin/index.js",
     "dev": "ts-node src/bin/index.ts",
+    "clean": "rm -rf .sexydynamite build node_modules",
     "ts-node": "ts-node",
-    "compile": "rm -rf lib && tsc && chmod a+x lib/bin/index.js",
-    "prepare": "npm run compile"
+    "truffle": "truffle",
+    "compile:src": "rm -rf lib && tsc && chmod a+x lib/bin/index.js",
+    "compile:contracts": "rm -rf build && truffle compile",
+    "prepare": "npm run compile:src && npm run compile:contracts"
   },
   "bin": {
     "sd": "./lib/bin/index.js",
@@ -30,6 +33,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "commander": "^4.1.0"
+    "commander": "^4.1.0",
+    "truffle": "^5.1.10"
   }
 }

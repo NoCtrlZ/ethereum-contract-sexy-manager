@@ -1,0 +1,6 @@
+[tasks.ganache]
+description = "Start Ganache"
+script = ['''
+#!/usr/bin/env bash
+./scripts/start_ganache.sh
+''']
