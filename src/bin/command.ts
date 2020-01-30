@@ -1,19 +1,15 @@
-#!/usr/bin/env node
-
-/**
- * Module dependencies.
- */
-
 const version = require('../../package.json').version
 import program from 'commander'
 import initialize from '../commands/init'
 
+const [nodePath, binPath, command] = process.argv;
+console.log(process.argv)
+console.log([nodePath, binPath, command])
+
 program
     .version(version, '-v, --version')
-
-program.command('init')
+    .command('init')
         .description('initialize contract manager')
         .action(() => initialize())
 
-program.parse(process.argv)
 export default program

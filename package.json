@@ -1,12 +1,12 @@
 {
   "name": "ethereum-contract-manager",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./lib/bin/index.js",
-    "dev": "ts-node src/bin/command.ts",
+    "dev": "ts-node src/bin/index.ts",
     "ts-node": "ts-node",
     "compile": "rm -rf lib && tsc && chmod a+x lib/bin/index.js"
   },
