@@ -2,5 +2,5 @@
 description = "Start Ganache"
 script = ['''
 #!/usr/bin/env bash
-./scripts/start_ganache.sh
+ganache-cli -m="belt prize arrow cabbage banner proof word above ability helmet design rely" -p 7545
 ''']
