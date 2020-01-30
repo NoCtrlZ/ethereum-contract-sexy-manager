@@ -1,6 +1,6 @@
 {
   "name": "ethereum-contract-sexy-manager",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "This CLI Manage Your Ethereum Contract With Upgradable",
   "main": "./lib/bin/index.js",
   "scripts": {
@@ -20,7 +20,8 @@
     "sexydynamite": "./lib/bin/index.js"
   },
   "files": [
-    "lib"
+    "lib",
+    "build"
   ],
   "keywords": [],
   "author": "",

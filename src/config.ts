@@ -8,5 +8,5 @@ module.exports = {
 
   },
   name: "ethereum-contract-sexy-manager",
-  version: "0.0.6"
+  version: "0.0.7"
 }
