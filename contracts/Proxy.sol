@@ -8,11 +8,11 @@ contract Proxy {
     event ChangeProxyAdmin(address newProxyAdmin);
 
     constructor(address implementation, address proxyAdmin, bytes memory initialCall) public {
-        require(implementation == address(0) && proxyAdmin == address(0));
+        require(implementation != address(0) && proxyAdmin != address(0));
         _setImplementation(implementation);
         _setProxyAdmin(proxyAdmin);
         if(initialCall.length > 0) {
-            (bool success,) = _implementation.delegatecall(initialCall);
+            (bool success,) = implementation.delegatecall(initialCall);
             require(success, "Fail to execute delegatecall");
         }
     }
