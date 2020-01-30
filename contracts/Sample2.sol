@@ -1,6 +1,6 @@
 pragma solidity 0.6.0;
 
-contract Sampel2 {
+contract Sample2 {
     uint8 public number;
     uint8 public num;
 

@@ -19,5 +19,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm i -g --unsafe-perm=true ganache-cli
     - run: ./scripts/start_ganache.sh
+    - run: truffle test
+    - run: npm i
+    - run: npm run start -v
+    - run: npm run start init
+    - run: npm run start create
       env:
         CI: true
