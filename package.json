@@ -1,19 +1,23 @@
 {
   "name": "ethereum-contract-manager",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
-  "main": "index.js",
+  "main": "./lib/bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./lib/bin/index.js",
     "dev": "ts-node src/bin/index.ts",
     "ts-node": "ts-node",
-    "compile": "rm -rf lib && tsc && chmod a+x lib/bin/index.js"
+    "compile": "rm -rf lib && tsc && chmod a+x lib/bin/index.js",
+    "prepare": "npm run compile"
   },
   "bin": {
     "sd": "./lib/bin/index.js",
     "sexydynamite": "./lib/bin/index.js"
   },
+  "files": [
+    "lib"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
