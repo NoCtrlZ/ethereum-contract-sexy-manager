@@ -10,4 +10,13 @@ const createNewDir = (path :string) => {
     }
 }
 
-export { isExist, createNewDir }
+const createNewFile = (path :string, contents :string) => {
+    if (!isExist(path)) {
+        fs.appendFile(path, contents, (err) => {
+            if (err) throw err
+            console.log('Successful in creating file')
+        })
+    }
+}
+
+export { isExist, createNewDir, createNewFile }

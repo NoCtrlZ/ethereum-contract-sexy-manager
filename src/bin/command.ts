@@ -1,4 +1,4 @@
-const version = require('../../package.json').version
+import { version } from '../utils/grobal_config'
 import program from 'commander'
 import initialize from '../commands/init'
 
