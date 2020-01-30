@@ -1,11 +1,12 @@
-import { joinPath, getTruffleConfig } from '../utils/file_system'
-import createWeb3 from '../utils/web3'
+import deployImplementation from '../transactions/deploy_implementation'
+import path from 'path'
+import Implementation from '../models/implementation'
 
 const create = async (projectDir :string) => {
-    console.log("hello")
-    const truffleConfigPath = joinPath(projectDir, "truffle-config.js")
-    const networkConfig = getTruffleConfig(truffleConfigPath)
-    console.log(networkConfig)
+    deployImplementation(projectDir)
+    const implementationPath = path.join(projectDir, 'build', 'constracts', 'Sample1')
+    let implementation = new Implementation(implementationPath)
+    console.log(implementation)
 }
 
 export default create
