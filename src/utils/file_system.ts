@@ -42,4 +42,8 @@ const getTruffleConfig = (path :string) => {
     }
 }
 
-export { createNewDir, joinPath, createNewFile, postscriptFile, getTruffleConfig }
+const getProxyAdminPath = () => {
+    return path.join(__dirname, '..', '..', 'build', 'contracts', 'ProxyAdmin.json')
+}
+
+export { createNewDir, joinPath, createNewFile, postscriptFile, getTruffleConfig, getProxyAdminPath }
