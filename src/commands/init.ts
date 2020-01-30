@@ -1,11 +1,13 @@
+import path from 'path'
+import { createNewDir } from '../utils/file_system'
 
-import { isExist, basedDir } from '../utils/file_system'
+const initialize = (projectDir :string) => {
+    createManagerDir(projectDir)
+}
 
-const initialize = () => {
-    const path  = basedDir()
-    const res = isExist(path)
-    console.log(path)
-    console.log("hello world")
+const createManagerDir = (projectDir :string) => {
+    const managerDir = path.join(projectDir, ".sexydynamite")
+    createNewDir(managerDir)
 }
 
 export default initialize
