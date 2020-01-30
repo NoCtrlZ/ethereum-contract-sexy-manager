@@ -1,10 +1,11 @@
 import path from 'path'
 import { version, provider } from '../utils/grobal_config'
-import { createNewDir, createNewFile } from '../utils/file_system'
+import { createNewDir, createNewFile, postscriptFile } from '../utils/file_system'
 
 const initialize = async (projectDir :string) => {
     await createManagerDir(projectDir)
     await createManagerFile(projectDir)
+    await addGitIgnore(projectDir)
 }
 
 const createManagerDir = async (projectDir :string) => {
@@ -16,10 +17,18 @@ const createManagerFile = async (projectDir :string) => {
     const managerFilePath = path.join(projectDir, ".sexydynamite", ".session")
     const contents = {
         version: version,
-        provider: provider
+        provider: provider,
+        owner_address: '',
+        owner_private_key: ''
     }
     const json = JSON.stringify(contents, null, '    ')
     await createNewFile(managerFilePath, json)
+}
+
+const addGitIgnore = async (projectDir :string) => {
+    const gitIgnorePath = path.join(projectDir, ".gitignore")
+    const content = "\n.sexydynamite/.session"
+    await postscriptFile(gitIgnorePath, content)
 }
 
 export default initialize

@@ -16,7 +16,16 @@ const createNewFile = (path :string, contents :string) => {
             if (err) throw err
             console.log('Successful in creating file')
         })
+    } else {
+        console.log('File already exists')
     }
 }
 
-export { isExist, createNewDir, createNewFile }
+const postscriptFile = (path :string, contents :string) => {
+    fs.appendFile(path, contents, (err) => {
+        if (err) throw err
+        console.log('Successful in creating file')
+    })
+}
+
+export { createNewDir, createNewFile, postscriptFile }
