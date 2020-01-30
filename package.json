@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "commander": "^4.1.0",
-    "truffle": "^5.1.10"
+    "truffle": "^5.1.10",
+    "web3": "^1.2.5"
   }
 }

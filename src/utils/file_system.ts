@@ -1,7 +1,13 @@
 import fs from 'fs'
+import path from 'path'
+import { defaultNetwork } from '../utils/grobal_config'
 
 const isExist = (path :string) => {
     return fs.existsSync(path) ? true : false
+}
+
+const joinPath = (prePath :string, postPath :string) => {
+    return path.join(prePath, postPath)
 }
 
 const createNewDir = (path :string) => {
@@ -28,4 +34,12 @@ const postscriptFile = (path :string, contents :string) => {
     })
 }
 
-export { createNewDir, createNewFile, postscriptFile }
+const getTruffleConfig = (path :string) => {
+    try {
+        return require(path).networks
+    } catch (err) {
+        return defaultNetwork
+    }
+}
+
+export { createNewDir, joinPath, createNewFile, postscriptFile, getTruffleConfig }

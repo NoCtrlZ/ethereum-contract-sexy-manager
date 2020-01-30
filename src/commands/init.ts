@@ -1,6 +1,6 @@
 import path from 'path'
 import { version, provider } from '../utils/grobal_config'
-import { createNewDir, createNewFile, postscriptFile } from '../utils/file_system'
+import { joinPath, createNewDir, createNewFile, postscriptFile } from '../utils/file_system'
 
 const initialize = async (projectDir :string) => {
     await createManagerDir(projectDir)
@@ -9,7 +9,7 @@ const initialize = async (projectDir :string) => {
 }
 
 const createManagerDir = async (projectDir :string) => {
-    const managerDirPath = path.join(projectDir, ".sexydynamite")
+    const managerDirPath = joinPath(projectDir, ".sexydynamite")
     await createNewDir(managerDirPath)
 }
 
@@ -26,7 +26,7 @@ const createManagerFile = async (projectDir :string) => {
 }
 
 const addGitIgnore = async (projectDir :string) => {
-    const gitIgnorePath = path.join(projectDir, ".gitignore")
+    const gitIgnorePath = joinPath(projectDir, ".gitignore")
     const content = "\n.sexydynamite/.session"
     await postscriptFile(gitIgnorePath, content)
 }
