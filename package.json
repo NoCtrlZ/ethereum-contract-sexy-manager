@@ -1,6 +1,6 @@
 {
   "name": "ethereum-contract-sexy-manager",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "This CLI Manage Your Ethereum Contract With Upgradable",
   "main": "./lib/bin/index.js",
   "scripts": {
@@ -13,8 +13,7 @@
     "compile": "rm -rf build && truffle compile",
     "compile:src": "rm -rf lib && tsc && chmod a+x lib/bin/index.js",
     "compile:contracts": "rm -rf build && truffle compile",
-    "migrate": "cp truffle-config.js src/truffle-config.ts && cp package.json src/",
-    "prepare": "npm run compile:src && npm run compile:contracts && cp src/package.json lib/"
+    "prepare": "npm run compile:src && npm run compile:contracts"
   },
   "bin": {
     "sd": "./lib/bin/index.js",
