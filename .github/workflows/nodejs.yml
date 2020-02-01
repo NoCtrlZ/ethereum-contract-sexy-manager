@@ -21,8 +21,9 @@ jobs:
     - run: npm i
     - run: ./scripts/start_ganache.sh
     - run: ./scripts/truffle_test.sh
-    - run: npm run start -v
-    - run: npm run start init
-    - run: npm run start create -c Sample1
+    - run: npm i -g ethereum-contract-sexy-manager
+    - run: sexydynamite -v
+    - run: sexydynamite init
+    - run: sexydynamite create -c Sample1
       env:
         CI: true
