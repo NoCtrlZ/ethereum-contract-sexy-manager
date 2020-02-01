@@ -5,9 +5,9 @@ import Proxy from '../models/proxy'
 import { getProxyAdminPath, getProxyPath } from '../utils/file_system'
 import createWeb3 from '../utils/web3'
 
-const deploy = async (projectDir :string) => {
+const deploy = async (projectDir :string, contractName :string) => {
     const web3 = createWeb3(projectDir)
-    const implementation = createImplementationInstance(projectDir)
+    const implementation = createImplementationInstance(projectDir, contractName)
     const Implementation = new web3.eth.Contract(implementation.abi())
     try {
         await Implementation.deploy({
@@ -27,7 +27,7 @@ const deploy = async (projectDir :string) => {
         return implementation.self()
     }
 
-    const proxyAdmin = createProxyAdminInstance(projectDir)
+    const proxyAdmin = createProxyAdminInstance()
     const ProxyAdmin = new web3.eth.Contract(proxyAdmin.abi())
     try {
         await ProxyAdmin.deploy({
@@ -47,7 +47,7 @@ const deploy = async (projectDir :string) => {
         return proxyAdmin.self()
     }
 
-    const proxy = createProxyInstance(projectDir)
+    const proxy = createProxyInstance()
     const Proxy = new web3.eth.Contract(proxy.abi())
     let name = 'add'
     let types = [ 'uint8', 'uint8' ]
@@ -75,17 +75,17 @@ const deploy = async (projectDir :string) => {
     }
 }
 
-const createImplementationInstance = (projectDir :string) => {
-    const implementationPath = path.join(projectDir, 'build', 'contracts', 'Sample1.json')
+const createImplementationInstance = (projectDir :string, contractName :string) => {
+    const implementationPath = path.join(projectDir, 'build', 'contracts', `${contractName}.json`)
     return new Implementation(implementationPath)
 }
 
-const createProxyAdminInstance = (projectDir :string) => {
+const createProxyAdminInstance = () => {
     const proxyAdminPath = getProxyAdminPath()
     return new ProxyAdmin(proxyAdminPath)
 }
 
-const createProxyInstance = (projectDir :string) => {
+const createProxyInstance = () => {
     const proxyPath = getProxyPath()
     return new Proxy(proxyPath)
 }

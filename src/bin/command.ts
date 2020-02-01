@@ -9,10 +9,14 @@ program
     .version(version, '-v, --version')
     .command('init')
         .description('initialize contract manager')
-        .action(() => initialize(process.cwd()))
+        .action(() => initialize(process.cwd()));
 program
         .command('create')
         .description('deploy contract manager')
-        .action(() => create(process.cwd()))
+        .requiredOption('-c, --contract <type>', 'add the contract name you want to deploy', 'Sample')
+        .action(options => {
+                create(process.cwd(), options.parent.rawArgs[4])
+        });
+
 
 export default program
