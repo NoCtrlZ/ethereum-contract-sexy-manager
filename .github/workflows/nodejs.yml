@@ -18,9 +18,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i -g --unsafe-perm=true ganache-cli
-    - run: ./scripts/start_ganache.sh
     - run: npm i
-    - run: npm run test
+    - run: ./scripts/start_ganache.sh
+    - run: ./scripts/truffle_test.sh
     - run: npm run start -v
     - run: npm run start init
     - run: npm run start create

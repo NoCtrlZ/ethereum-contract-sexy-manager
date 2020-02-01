@@ -21,6 +21,10 @@ contract ProxyAdmin {
         _owner = ownerAddress;
     }
 
+    function getOwner() public view onlyOwner returns (address) {
+        return _owner;
+    }
+
     function getImplementation(Proxy proxy) public view onlyOwner returns (address) {
         (bool success, bytes memory data) = address(proxy).staticcall(abi.encodeWithSignature("implementation()"));
         require(success);

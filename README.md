@@ -1,4 +1,6 @@
 # Ethereum Contract Upgrade Manager
+## Install
+```npm install -g ethereum-contract-sexy-manager```
 ## Architecture
 ![architecture diagram](./diagram/architecture.png)
 ### Jargon
