@@ -23,6 +23,6 @@ jobs:
     - run: ./scripts/truffle_test.sh
     - run: npm run start -v
     - run: npm run start init
-    - run: npm run start create
+    - run: npm run start create -c Sample1
       env:
         CI: true

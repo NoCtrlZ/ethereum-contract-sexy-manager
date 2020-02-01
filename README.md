@@ -1,6 +1,8 @@
 # Ethereum Contract Upgrade Manager
+![npm version](https://badge.fury.io/js/ethereum-contract-sexy-manager.svg)  
+This is CLI to deploy your contract with upgradeable architecture.
 ## Install
-```npm install -g ethereum-contract-sexy-manager```
+```$ npm install -g ethereum-contract-sexy-manager```
 ## Architecture
 ![architecture diagram](./diagram/architecture.png)
 ### Jargon
@@ -17,7 +19,8 @@ If you execute `$ sexydynamite create` this CLI works as following.
 3. Deploy the Proxy and store the Proxy Admin address as manager.  
 
 ## Commands
-`$ sexydynamite init`  
+```$ sexydynamite init```  
 Create `.sexydynamite` directory and `.session` you can set your wallet and private key here, and add `.session` file to .gitignore in order not to push your private information.  
-`$ sexydynamite create -c {Contract Name}`  
+
+```$ sexydynamite create -c {Contract Name}```  
 Deploy your contract with above architecture. The contract needs to be compiled `build/contracts` directory.
