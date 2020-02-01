@@ -1,4 +1,6 @@
 module.exports = {
+  name: "ethereum-contract-sexy-manager",
+  version: "0.0.7",
   networks: {
     development: {
      host: "127.0.0.1",     // Localhost (default: none)
@@ -6,7 +8,5 @@ module.exports = {
      network_id: "*",       // Any network (default: none)
     },
 
-  },
-  name: "ethereum-contract-sexy-manager",
-  version: "0.0.7"
+  }
 }
