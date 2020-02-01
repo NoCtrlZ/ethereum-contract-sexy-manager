@@ -1,6 +1,8 @@
 # Ethereum Contract Upgrade Manager
 ![npm version](https://badge.fury.io/js/ethereum-contract-sexy-manager.svg)  
-This is CLI to deploy your contract with upgradeable architecture.
+
+This is CLI to deploy your contract with upgradeable architecture.  
+
 ## Install
 ```$ npm install -g ethereum-contract-sexy-manager```
 ## Architecture
