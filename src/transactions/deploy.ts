@@ -3,6 +3,7 @@ import Implementation from '../models/implementation'
 import ProxyAdmin from '../models/proxyAdmin'
 import Proxy from '../models/proxy'
 import { getProxyAdminPath, getProxyPath } from '../utils/file_system'
+import { defaultTxParams } from '../utils/grobal_config'
 import createWeb3 from '../utils/web3'
 
 const deploy = async (projectDir :string, contractName :string) => {
@@ -13,11 +14,7 @@ const deploy = async (projectDir :string, contractName :string) => {
         await Implementation.deploy({
             data: implementation.json().bytecode
         })
-        .send({
-            from: '0x17a4dc4af1faf9c3db0515a170491c37eb0373dc',
-            gas: 1500000,
-            gasPrice: '30000000000'
-        })
+        .send(defaultTxParams)
         .on('receipt', (receipt) => {
             console.log(String(receipt.contractAddress))
             implementation.setAddress(String(receipt.contractAddress))
@@ -33,11 +30,7 @@ const deploy = async (projectDir :string, contractName :string) => {
         await ProxyAdmin.deploy({
             data: proxyAdmin.json().bytecode
         })
-        .send({
-            from: '0x17a4dc4af1faf9c3db0515a170491c37eb0373dc',
-            gas: 1500000,
-            gasPrice: '30000000000'
-        })
+        .send(defaultTxParams)
         .on('receipt', (receipt) => {
             console.log(String(receipt.contractAddress))
             proxyAdmin.setAddress(String(receipt.contractAddress))
@@ -60,11 +53,7 @@ const deploy = async (projectDir :string, contractName :string) => {
             data: proxy.json().bytecode,
             arguments: [implementation.address, proxyAdmin.address, encodedTransaction]
         })
-        .send({
-            from: '0x17a4dc4af1faf9c3db0515a170491c37eb0373dc',
-            gas: 1500000,
-            gasPrice: '30000000000'
-        })
+        .send(defaultTxParams)
         .on('receipt', (receipt) => {
             console.log(String(receipt.contractAddress))
             proxy.setAddress(String(receipt.contractAddress))

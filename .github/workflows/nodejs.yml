@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm i -g --unsafe-perm=true ganache-cli
+    - run: npm i -g --unsafe-perm=true ganache-cli npm-auto-version
     - run: npm i
     - run: ./scripts/start_ganache.sh
     - run: ./scripts/truffle_test.sh
