@@ -2,11 +2,13 @@ import path from 'path'
 import Implementation from '../models/implementation'
 import ProxyAdmin from '../models/proxyAdmin'
 import Proxy from '../models/proxy'
-import { getProxyAdminPath, getProxyPath } from '../utils/file_system'
+import Component from '../models/component'
+import { getProxyAdminPath, getProxyPath, emitProjectFile } from '../utils/file_system'
 import { defaultTxParams } from '../utils/grobal_config'
 import createWeb3 from '../utils/web3'
 
 const deploy = async (projectDir :string, contractName :string) => {
+    let component = new Component(contractName)
     const web3 = createWeb3(projectDir)
     const implementation = createImplementationInstance(projectDir, contractName)
     const Implementation = new web3.eth.Contract(implementation.abi())
@@ -23,6 +25,7 @@ const deploy = async (projectDir :string, contractName :string) => {
         console.log(err)
         return implementation.self()
     }
+    await component.setImplementationAddress(implementation.address)
 
     const proxyAdmin = createProxyAdminInstance()
     const ProxyAdmin = new web3.eth.Contract(proxyAdmin.abi())
@@ -39,6 +42,7 @@ const deploy = async (projectDir :string, contractName :string) => {
         console.log(err)
         return proxyAdmin.self()
     }
+    await component.setProxyAdminAddress(proxyAdmin.address)
 
     const proxy = createProxyInstance()
     const Proxy = new web3.eth.Contract(proxy.abi())
@@ -62,6 +66,8 @@ const deploy = async (projectDir :string, contractName :string) => {
         console.log(err)
         return proxy.self()
     }
+    await component.setProxyAddress(proxy.address)
+    emitProjectFile(projectDir, component.self())
 }
 
 const createImplementationInstance = (projectDir :string, contractName :string) => {

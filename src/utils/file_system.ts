@@ -27,6 +27,17 @@ const createNewFile = (path :string, contents :string) => {
     }
 }
 
+const createNewJsonFile = (path :string, contents :Object) => {
+    if (!isExist(path)) {
+        fs.appendFile(path, JSON.stringify(contents, null, '    '), (err) => {
+            if (err) throw err
+            console.log('Successful in creating file')
+        })
+    } else {
+        console.log('File already exists')
+    }
+}
+
 const postscriptFile = (path :string, contents :string) => {
     fs.appendFile(path, contents, (err) => {
         if (err) throw err
@@ -50,4 +61,17 @@ const getProxyPath = () => {
     return path.join(__dirname, '..', '..', 'build', 'contracts', 'Proxy.json')
 }
 
-export { createNewDir, joinPath, createNewFile, postscriptFile, getTruffleConfig, getProxyAdminPath, getProxyPath }
+const emitProjectFile = async (projectDir :string, project :any) => {
+    const projectFilePath = path.join(projectDir, '.sexydynamite', 'deployed.json')
+    const contents = {
+        timestamp: project.timestamp,
+        deployer: project.deployer,
+        contractName: project.contractName,
+        implementationAddress: project.implementationAddress,
+        proxyAdminAddress: project.proxyAdminAddress,
+        proxyAddress: project.proxyAddress
+    }
+    await createNewJsonFile(projectFilePath, contents)
+}
+
+export { createNewDir, joinPath, createNewFile, postscriptFile, getTruffleConfig, getProxyAdminPath, getProxyPath, emitProjectFile }

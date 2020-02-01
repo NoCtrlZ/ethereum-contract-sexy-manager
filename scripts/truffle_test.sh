@@ -1,4 +1,4 @@
 #!/bin/bash
 
-truffle compile
-truffle test
+npm run compile
+npm run test
