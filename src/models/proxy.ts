@@ -1,18 +1,18 @@
+import { getProxyPath } from '../utils/file_system'
+
 export default class Proxy {
-    path: string
     address: string
 
-    constructor(path :string) {
-        this.path = path
+    constructor() {
         this.address = ''
     }
 
     json() {
-        return require(this.path)
+        return require(getProxyPath())
     }
 
     abi() {
-        return require(this.path).abi
+        return require(getProxyPath()).abi
     }
 
     setAddress(implementationAddress :string) {

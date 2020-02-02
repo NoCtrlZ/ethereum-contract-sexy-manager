@@ -1,18 +1,18 @@
+import { getProxyAdminPath } from '../utils/file_system'
+
 export default class ProxyAdmin {
-    path: string
     address: string
 
-    constructor(path :string) {
-        this.path = path
+    constructor() {
         this.address = ''
     }
 
     json() {
-        return require(this.path)
+        return require(getProxyAdminPath())
     }
 
     abi() {
-        return require(this.path).abi
+        return require(getProxyAdminPath()).abi
     }
 
     setAddress(implementationAddress :string) {

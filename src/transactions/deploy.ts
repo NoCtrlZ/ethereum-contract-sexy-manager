@@ -1,9 +1,8 @@
-import path from 'path'
 import Implementation from '../models/implementation'
 import ProxyAdmin from '../models/proxyAdmin'
 import Proxy from '../models/proxy'
 import Component from '../models/component'
-import { getProxyAdminPath, getProxyPath, emitProjectFile } from '../utils/file_system'
+import { getProxyAdminPath, getProxyPath, getContractPath, emitProjectFile } from '../utils/file_system'
 import { defaultTxParams } from '../utils/grobal_config'
 import createWeb3 from '../utils/web3'
 
@@ -71,18 +70,16 @@ const deploy = async (projectDir :string, contractName :string) => {
 }
 
 const createImplementationInstance = (projectDir :string, contractName :string) => {
-    const implementationPath = path.join(projectDir, 'build', 'contracts', `${contractName}.json`)
+    const implementationPath = getContractPath(projectDir, contractName)
     return new Implementation(implementationPath)
 }
 
 const createProxyAdminInstance = () => {
-    const proxyAdminPath = getProxyAdminPath()
-    return new ProxyAdmin(proxyAdminPath)
+    return new ProxyAdmin()
 }
 
 const createProxyInstance = () => {
-    const proxyPath = getProxyPath()
-    return new Proxy(proxyPath)
+    return new Proxy()
 }
 
 export default deploy
