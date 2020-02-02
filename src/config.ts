@@ -1,6 +1,6 @@
 module.exports = {
   name: "ethereum-contract-sexy-manager",
-  version: "0.1.3",
+  version: "0.1.4",
   networks: {
     development: {
      host: "127.0.0.1",     // Localhost (default: none)
