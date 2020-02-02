@@ -2,13 +2,14 @@ import Implementation from '../models/implementation'
 import ProxyAdmin from '../models/proxyAdmin'
 import Component from '../models/component'
 import createWeb3 from '../utils/web3'
+import Upgrader from '../models/upgrader'
 import { getContractPath, emitUpgradedProject } from '../utils/file_system'
 import { defaultTxParams } from '../utils/grobal_config'
-import { proxyAdminAddress, proxyAddress } from '../utils/upgrade_config'
 
 
 const upgradeImplementation = async (projectDir :string, contractName :string) => {
     let component = new Component(contractName)
+    let upgrader = new Upgrader(projectDir)
     const web3 = createWeb3(projectDir)
     const implementation = createImplementationInstance(projectDir, contractName)
     const Implementation = new web3.eth.Contract(implementation.abi())
@@ -28,9 +29,9 @@ const upgradeImplementation = async (projectDir :string, contractName :string) =
     await component.setImplementationAddress(implementation.address)
 
     const proxyAdmin = createProxyAdminInstance()
-    const ProxyAdmin = new web3.eth.Contract(proxyAdmin.abi(), proxyAdminAddress)
+    const ProxyAdmin = new web3.eth.Contract(proxyAdmin.abi(), upgrader.proxyAdminAddress)
     try {
-        await ProxyAdmin.methods.upgradeImplementation(proxyAddress, implementation.address)
+        await ProxyAdmin.methods.upgradeImplementation(upgrader.proxyAddress, implementation.address)
         .send(defaultTxParams)
         .on('receipt', (receipt) => {
             console.log('successful in upgrading')
@@ -41,8 +42,8 @@ const upgradeImplementation = async (projectDir :string, contractName :string) =
         console.log(err)
         return implementation.self()
     }
-    await component.setProxyAddress(proxyAddress)
-    await component.setProxyAdminAddress(proxyAdminAddress)
+    await component.setProxyAddress(upgrader.proxyAddress)
+    await component.setProxyAdminAddress(upgrader.proxyAdminAddress)
     emitUpgradedProject(projectDir, component.self())
 }
 
