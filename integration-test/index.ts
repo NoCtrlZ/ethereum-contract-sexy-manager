@@ -1,16 +1,18 @@
-import Transaction from './utils/transaction'
+import { Proxy, deployer } from './utils/config'
 
 const integrationTest = async () => {
-    await sendTransaction()
+    const res = await sendTransaction()
+    console.log(res)
+    await testNumber()
 }
 
 const sendTransaction = async () => {
-    const functionName = 'add'
-    const args = [
-        '3',
-        '5'
-    ]
-    return await Transaction.sendRawTx(functionName, args)
+    return await Proxy.methods.add(3, 5).send({ from: deployer })
+}
+
+const testNumber = async () => {
+    const number = await Proxy.methods.number().call({ from: deployer }).catch(console.log)
+    console.log(number)
 }
 
 integrationTest()

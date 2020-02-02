@@ -15,6 +15,4 @@ export const ImplementationJson = require('../../build/contracts/Sample1')
 export const web3 = new Web3(new Web3.providers.HttpProvider(url))
 export const deployer = ProjectJson.deployer
 export const privateKey = require('../../.sexydynamite/admin').owner_private_key
-export const Implementation = new web3.eth.Contract(ImplementationJson.abi, implementationAddress)
-export const ProxyAdmin = new web3.eth.Contract(ProxyAdminJson.abi, proxyAdminAddress)
-export const Proxy = new web3.eth.Contract(ProxyJson.abi, proxyAddress)
+export const Proxy = new web3.eth.Contract(ImplementationJson.abi, proxyAddress)
