@@ -7,6 +7,7 @@ export default class Component {
     implementationAddress?: string
     proxyAdminAddress?: string
     proxyAddress?: string
+    upgradeHash?: string
 
     constructor(contractName :string) {
         this.timestamp = currentTime()
@@ -24,6 +25,10 @@ export default class Component {
 
     setProxyAddress(proxyAddress :string) {
         this.proxyAddress = proxyAddress
+    }
+
+    setUpgradeHash(upgradeHash: string) {
+        this.upgradeHash = upgradeHash
     }
 
     self() {

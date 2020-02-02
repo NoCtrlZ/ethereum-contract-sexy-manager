@@ -1,9 +1,7 @@
-import { isExist, getProjectPath } from '../utils/file_system'
+import { isExist, getDeployProjectPath } from '../utils/file_system'
 import upgradeImplementation from '../transactions/upgrade'
 
 const upgrade = async (projectDir :string, contractName :string) => {
-    console.log(projectDir, contractName)
-    console.log(isImplementationExist(projectDir))
     if (isImplementationExist(projectDir)) {
         upgradeImplementation(projectDir, contractName)
     } else {
@@ -12,7 +10,7 @@ const upgrade = async (projectDir :string, contractName :string) => {
 }
 
 const isImplementationExist = (projectDir :string) => {
-    return isExist(getProjectPath(projectDir))
+    return isExist(getDeployProjectPath(projectDir))
 }
 
 export default upgrade

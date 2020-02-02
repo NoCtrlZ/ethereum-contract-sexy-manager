@@ -61,18 +61,36 @@ const getProxyPath = () => {
     return path.join(__dirname, '..', '..', 'build', 'contracts', 'Proxy.json')
 }
 
-const getProjectPath = (projectDir :string) => {
+const getDeployProjectPath = (projectDir :string) => {
     return path.join(projectDir, '.sexydynamite', 'deployed.json')
+}
+
+const getUpgradeProjectPath = (projectDir :string) => {
+    return path.join(projectDir, '.sexydynamite', 'upgraded.json')
 }
 
 const getContractPath = (projectDir :string, contractName :string) => {
     return path.join(projectDir, 'build', 'contracts', `${contractName}.json`)
 }
 
-const emitProjectFile = async (projectDir :string, project :any) => {
-    const projectFilePath = getProjectPath(projectDir)
+const emitDeployedProjectFile = async (projectDir :string, project :any) => {
+    const projectFilePath = getDeployProjectPath(projectDir)
     const contents = {
         timestamp: project.timestamp,
+        deployer: project.deployer,
+        contractName: project.contractName,
+        implementationAddress: project.implementationAddress,
+        proxyAdminAddress: project.proxyAdminAddress,
+        proxyAddress: project.proxyAddress
+    }
+    await createNewJsonFile(projectFilePath, contents)
+}
+
+const emitUpgradedProject = async (projectDir :string, project :any) => {
+    const projectFilePath = getUpgradeProjectPath(projectDir)
+    const contents = {
+        timestamp: project.timestamp,
+        upgradeHash: project.upgradeHash,
         deployer: project.deployer,
         contractName: project.contractName,
         implementationAddress: project.implementationAddress,
@@ -91,6 +109,8 @@ export {
     getTruffleConfig,
     getProxyAdminPath,
     getProxyPath,
-    getProjectPath,
+    getDeployProjectPath,
     getContractPath,
-    emitProjectFile }
+    emitDeployedProjectFile,
+    emitUpgradedProject
+}

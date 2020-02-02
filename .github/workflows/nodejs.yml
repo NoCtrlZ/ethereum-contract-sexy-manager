@@ -25,5 +25,6 @@ jobs:
     - run: sexydynamite -v
     - run: sexydynamite init
     - run: sexydynamite create -c Sample1
+    - run: sexydynamite upgrade -c Sample2
       env:
         CI: true

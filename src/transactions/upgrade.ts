@@ -2,13 +2,12 @@ import Implementation from '../models/implementation'
 import ProxyAdmin from '../models/proxyAdmin'
 import Component from '../models/component'
 import createWeb3 from '../utils/web3'
-import { getContractPath } from '../utils/file_system'
+import { getContractPath, emitUpgradedProject } from '../utils/file_system'
 import { defaultTxParams, proxyAdminAddress, proxyAddress } from '../utils/grobal_config'
 
 
 const upgradeImplementation = async (projectDir :string, contractName :string) => {
     let component = new Component(contractName)
-    console.log(projectDir, contractName)
     const web3 = createWeb3(projectDir)
     const implementation = createImplementationInstance(projectDir, contractName)
     const Implementation = new web3.eth.Contract(implementation.abi())
@@ -35,11 +34,15 @@ const upgradeImplementation = async (projectDir :string, contractName :string) =
         .on('receipt', (receipt) => {
             console.log('successful in upgrading')
             console.log(receipt.transactionHash)
+            component.setUpgradeHash(receipt.transactionHash)
         })
     } catch (err) {
         console.log(err)
         return implementation.self()
     }
+    await component.setProxyAddress(proxyAddress)
+    await component.setProxyAdminAddress(proxyAdminAddress)
+    emitUpgradedProject(projectDir, component.self())
 }
 
 const createImplementationInstance = (projectDir :string, contractName :string) => {
