@@ -3,7 +3,8 @@ import ProxyAdmin from '../models/proxyAdmin'
 import Component from '../models/component'
 import createWeb3 from '../utils/web3'
 import { getContractPath, emitUpgradedProject } from '../utils/file_system'
-import { defaultTxParams, proxyAdminAddress, proxyAddress } from '../utils/grobal_config'
+import { defaultTxParams } from '../utils/grobal_config'
+import { proxyAdminAddress, proxyAddress } from '../utils/upgrade_config'
 
 
 const upgradeImplementation = async (projectDir :string, contractName :string) => {
