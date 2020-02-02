@@ -8,6 +8,6 @@ export const currentTime = () => {
     return `${year}${month}${date}${hour}${min}`
 }
 
-const formatZero = (number) => {
-    return ("0" + number).slice(-2)
-}
+const formatZero = (number) => (
+    ("0" + number).slice(-2)
+)

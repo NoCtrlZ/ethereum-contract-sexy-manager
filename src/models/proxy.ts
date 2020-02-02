@@ -7,19 +7,19 @@ export default class Proxy {
         this.address = ''
     }
 
-    json() {
-        return require(getProxyPath())
-    }
+    json = () => (
+        require(getProxyPath())
+    )
 
-    abi() {
-        return require(getProxyPath()).abi
-    }
+    abi = () => (
+        require(getProxyPath()).abi
+    )
 
-    setAddress(implementationAddress :string) {
+    setAddress = (implementationAddress :string) => {
         this.address = implementationAddress
     }
 
-    self() {
-        return this
-    }
+    self = () => (
+        this
+    )
 }

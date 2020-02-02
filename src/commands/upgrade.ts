@@ -9,8 +9,8 @@ const upgrade = async (projectDir :string, contractName :string) => {
     }
 }
 
-const isImplementationExist = (projectDir :string) => {
-    return isExist(getDeployProjectPath(projectDir))
-}
+const isImplementationExist = (projectDir :string) => (
+    isExist(getDeployProjectPath(projectDir))
+)
 
 export default upgrade

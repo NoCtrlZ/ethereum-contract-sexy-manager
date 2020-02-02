@@ -7,19 +7,19 @@ export default class ProxyAdmin {
         this.address = ''
     }
 
-    json() {
-        return require(getProxyAdminPath())
-    }
+    json = () => (
+        require(getProxyAdminPath())
+    )
 
-    abi() {
-        return require(getProxyAdminPath()).abi
-    }
+    abi = () => (
+        require(getProxyAdminPath()).abi
+    )
 
-    setAddress(implementationAddress :string) {
+    setAddress = (implementationAddress :string) => {
         this.address = implementationAddress
     }
 
-    self() {
-        return this
-    }
+    self = () => (
+        this
+    )
 }

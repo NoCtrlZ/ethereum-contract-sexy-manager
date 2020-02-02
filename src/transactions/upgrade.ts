@@ -51,8 +51,8 @@ const createImplementationInstance = (projectDir :string, contractName :string) 
     return new Implementation(implementationPath)
 }
 
-const createProxyAdminInstance = () => {
-    return new ProxyAdmin()
-}
+const createProxyAdminInstance = () => (
+    new ProxyAdmin()
+)
 
 export default upgradeImplementation

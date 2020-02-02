@@ -74,12 +74,12 @@ const createImplementationInstance = (projectDir :string, contractName :string) 
     return new Implementation(implementationPath)
 }
 
-const createProxyAdminInstance = () => {
-    return new ProxyAdmin()
-}
+const createProxyAdminInstance = () => (
+    new ProxyAdmin()
+)
 
-const createProxyInstance = () => {
-    return new Proxy()
-}
+const createProxyInstance = () => (
+    new Proxy()
+)
 
 export default deploy

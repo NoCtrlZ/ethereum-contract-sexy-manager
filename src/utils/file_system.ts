@@ -2,13 +2,13 @@ import fs from 'fs'
 import path from 'path'
 import { defaultNetwork } from '../utils/grobal_config'
 
-const isExist = (path :string) => {
-    return fs.existsSync(path) ? true : false
-}
+const isExist = (path :string) => (
+    fs.existsSync(path) ? true : false
+)
 
-const joinPath = (prePath :string, postPath :string) => {
-    return path.join(prePath, postPath)
-}
+const joinPath = (prePath :string, postPath :string) => (
+    path.join(prePath, postPath)
+)
 
 const createNewDir = (path :string) => {
     if (!isExist(path)) {
@@ -53,25 +53,25 @@ const getTruffleConfig = (path :string) => {
     }
 }
 
-const getProxyAdminPath = () => {
-    return path.join(__dirname, '..', '..', 'build', 'contracts', 'ProxyAdmin.json')
-}
+const getProxyAdminPath = () => (
+    path.join(__dirname, '..', '..', 'build', 'contracts', 'ProxyAdmin.json')
+)
 
-const getProxyPath = () => {
-    return path.join(__dirname, '..', '..', 'build', 'contracts', 'Proxy.json')
-}
+const getProxyPath = () => (
+    path.join(__dirname, '..', '..', 'build', 'contracts', 'Proxy.json')
+)
 
-const getDeployProjectPath = (projectDir :string) => {
-    return path.join(projectDir, '.sexydynamite', 'deployed.json')
-}
+const getDeployProjectPath = (projectDir :string) => (
+    path.join(projectDir, '.sexydynamite', 'deployed.json')
+)
 
-const getUpgradeProjectPath = (projectDir :string) => {
-    return path.join(projectDir, '.sexydynamite', 'upgraded.json')
-}
+const getUpgradeProjectPath = (projectDir :string) => (
+    path.join(projectDir, '.sexydynamite', 'upgraded.json')
+)
 
-const getContractPath = (projectDir :string, contractName :string) => {
-    return path.join(projectDir, 'build', 'contracts', `${contractName}.json`)
-}
+const getContractPath = (projectDir :string, contractName :string) => (
+    path.join(projectDir, 'build', 'contracts', `${contractName}.json`)
+)
 
 const emitDeployedProjectFile = async (projectDir :string, project :any) => {
     const projectFilePath = getDeployProjectPath(projectDir)

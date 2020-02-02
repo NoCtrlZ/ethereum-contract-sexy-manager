@@ -7,19 +7,19 @@ export default class Implementation {
         this.address = ''
     }
 
-    json() {
-        return require(this.path)
-    }
+    json = () => (
+        require(this.path)
+    )
 
-    abi() {
-        return require(this.path).abi
-    }
+    abi = () => (
+        require(this.path).abi
+    )
 
-    setAddress(implementationAddress :string) {
+    setAddress = (implementationAddress :string) => {
         this.address = implementationAddress
     }
 
-    self() {
-        return this
-    }
+    self = () => (
+        this
+    )
 }

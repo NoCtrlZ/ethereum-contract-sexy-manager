@@ -15,23 +15,23 @@ export default class Component {
         this.contractName = contractName
     }
 
-    setImplementationAddress(implementationAddress :string) {
+    setImplementationAddress = (implementationAddress :string) => {
         this.implementationAddress = implementationAddress
     }
 
-    setProxyAdminAddress(proxyAdminAddress :string) {
+    setProxyAdminAddress = (proxyAdminAddress :string) => {
         this.proxyAdminAddress = proxyAdminAddress
     }
 
-    setProxyAddress(proxyAddress :string) {
+    setProxyAddress = (proxyAddress :string) => {
         this.proxyAddress = proxyAddress
     }
 
-    setUpgradeHash(upgradeHash: string) {
+    setUpgradeHash = (upgradeHash: string) => {
         this.upgradeHash = upgradeHash
     }
 
-    self() {
-        return this
-    }
+    self = () => (
+        this
+    )
 }
