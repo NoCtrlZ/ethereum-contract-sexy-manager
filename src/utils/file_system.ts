@@ -73,6 +73,11 @@ const getContractPath = (projectDir :string, contractName :string) => (
     path.join(projectDir, 'build', 'contracts', `${contractName}.json`)
 )
 
+const getDeployJson = (projectDir :string) => {
+    const deployJsonPath = getDeployProjectPath(projectDir)
+    return require(deployJsonPath)
+}
+
 const emitDeployedProjectFile = async (projectDir :string, project :any) => {
     const projectFilePath = getDeployProjectPath(projectDir)
     const contents = {
@@ -111,6 +116,7 @@ export {
     getProxyPath,
     getDeployProjectPath,
     getContractPath,
+    getDeployJson,
     emitDeployedProjectFile,
     emitUpgradedProject
 }
