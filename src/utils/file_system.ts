@@ -61,8 +61,16 @@ const getProxyPath = () => {
     return path.join(__dirname, '..', '..', 'build', 'contracts', 'Proxy.json')
 }
 
+const getProjectPath = (projectDir :string) => {
+    return path.join(projectDir, '.sexydynamite', 'deployed.json')
+}
+
+const getContractPath = (projectDir :string, contractName :string) => {
+    return path.join(projectDir, 'build', 'contracts', `${contractName}.json`)
+}
+
 const emitProjectFile = async (projectDir :string, project :any) => {
-    const projectFilePath = path.join(projectDir, '.sexydynamite', 'deployed.json')
+    const projectFilePath = getProjectPath(projectDir)
     const contents = {
         timestamp: project.timestamp,
         deployer: project.deployer,
@@ -74,4 +82,15 @@ const emitProjectFile = async (projectDir :string, project :any) => {
     await createNewJsonFile(projectFilePath, contents)
 }
 
-export { createNewDir, joinPath, createNewFile, postscriptFile, getTruffleConfig, getProxyAdminPath, getProxyPath, emitProjectFile }
+export {
+    isExist,
+    createNewDir,
+    joinPath,
+    createNewFile,
+    postscriptFile,
+    getTruffleConfig,
+    getProxyAdminPath,
+    getProxyPath,
+    getProjectPath,
+    getContractPath,
+    emitProjectFile }

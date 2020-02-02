@@ -2,7 +2,7 @@ import Implementation from '../models/implementation'
 import ProxyAdmin from '../models/proxyAdmin'
 import Proxy from '../models/proxy'
 import Component from '../models/component'
-import { getProxyAdminPath, getProxyPath, getContractPath, emitProjectFile } from '../utils/file_system'
+import { getContractPath, emitProjectFile } from '../utils/file_system'
 import { defaultTxParams } from '../utils/grobal_config'
 import createWeb3 from '../utils/web3'
 
