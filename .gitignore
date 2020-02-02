@@ -4,3 +4,5 @@ yarn-error.log
 lib
 .sexydynamite
 build
+
+.sexydynamite/admin.json

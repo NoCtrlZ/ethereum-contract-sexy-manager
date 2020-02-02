@@ -14,7 +14,7 @@ const createManagerDir = async (projectDir :string) => {
 }
 
 const createManagerFile = async (projectDir :string) => {
-    const managerFilePath = path.join(projectDir, ".sexydynamite", ".session")
+    const managerFilePath = path.join(projectDir, ".sexydynamite", "admin.json")
     const contents = {
         version: version,
         provider: provider,
@@ -27,7 +27,7 @@ const createManagerFile = async (projectDir :string) => {
 
 const addGitIgnore = async (projectDir :string) => {
     const gitIgnorePath = joinPath(projectDir, ".gitignore")
-    const content = "\n.sexydynamite/.session"
+    const content = "\n.sexydynamite/admin.json"
     await postscriptFile(gitIgnorePath, content)
 }
 
