@@ -11,12 +11,4 @@ contract Sample2 {
     function dec(uint8 a) public {
         num = number - a;
     }
-
-    function getNumber() public view returns (uint8) {
-        return number;
-    }
-
-    function getNum() public view returns (uint8) {
-        return num;
-    }
 }
