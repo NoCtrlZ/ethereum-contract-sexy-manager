@@ -1,4 +1,4 @@
 #!/bin/bash
 
 npm run compile
-npm run test
+npm run test:unit
